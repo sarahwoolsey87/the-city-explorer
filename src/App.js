@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import "./App.css";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         console.log("No location data found.");
       }
     } catch (error) {
-      console.log(error);
+      
     }
   }
 
