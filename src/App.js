@@ -14,12 +14,17 @@ function App() {
   async function getLocation(event) {
     try {
       event.preventDefault();
-      event.target.input.value = "";
+      setSearchQuery("");
   
       const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchQuery}&format=json`;
       const res = await fetch(API);
+  
+      if (!res.ok) {
+        throw new Error("API request failed.");
+      }
+  
       const data = await res.json();
-      
+  
       if (data && data.length > 0) {
         setLocation(data[0]);
         handleMap(data[0]);
@@ -27,7 +32,7 @@ function App() {
         console.log("No location data found.");
       }
     } catch (error) {
-      
+      console.error("Error fetching location:", error);
     }
   }
 
