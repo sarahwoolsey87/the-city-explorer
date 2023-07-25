@@ -12,11 +12,13 @@ function App() {
   }
 
   async function getLocation(event) {
+
+    //console.log("API Key:", process.env.REACT_APP_LOCATIONIQ_API_KEY);
     try {
       event.preventDefault();
-      setSearchQuery("");
+      //setSearchQuery("");
   
-      const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchQuery}&format=json`;
+      const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${searchQuery}&format=json`;
       const res = await fetch(API);
   
       if (!res.ok) {
